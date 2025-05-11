@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Quinceaños Aremys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Portada */
+    .cover {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffcccb, #e6e6fa);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .cover h1 span {
+      display: inline-block;
+      animation: letterFade 1s ease-in-out forwards;
+    }
+
+    @keyframes letterFade {
+      0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background-color: #ffd700;
+      color: #333;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      z-index: 10;
+    }
+
+    .btn:hover {
+      background-color: #ffcccb;
+      transform: scale(1.05);
+    }
+
+    /* Animaciones de confeti mejoradas */
+    .balloon, .confetti, .firework {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    .balloon {
+      background: #ffcccb;
+    }
+
+    .confetti {
+      background: #ffd700;
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    }
+
+    .firework {
+      background: #e6e6fa;
+      animation: explode 3s infinite;
+    }
+
+    /* Más partículas con variaciones */
+    .confetti:nth-child(odd) {
+      width: 10px;
+      height: 10px;
+      background: #ff69b4;
+      animation-duration: 4s;
+    }
+
+    .balloon:nth-child(even) {
+      width: 20px;
+      height: 20px;
+      background: #dda0dd;
+      animation-duration: 6s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* Efecto de explosión de confeti */
+    .confetti-explosion {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: confettiFall 2s ease-out forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+      100% { transform: translate(var(--x), 100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Contenido */
+    .content {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #ffcccb;
+      margin: 20px 0;
+      line-height: 1.4;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: #333;
+      margin: 30px 0 15px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background: #ffd700;
+      display: block;
+      margin: 10px auto;
+    }
+
+    /* Carrusel automático */
+    .carousel {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      overflow-x: hidden;
+      white-space: nowrap;
+      width: 100%;
+      position: relative;
+    }
+
+    .carousel-inner {
+      display: flex;
+      animation: autoSlide 15s linear infinite;
+    }
+
+    .carousel:hover .carousel-inner {
+      animation-play-state: paused; /* Pausa al pasar el mouse */
+    }
+
+    .carousel img {
+      width: 250px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex: 0 0 auto;
+      transition: transform 0.3s;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes autoSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); } /* Mitad para bucle infinito */
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 10px;
+    }
+
+    .messages p {
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 5px solid #ffcccb;
+      text-align: left;
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      color: #666;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .cover h1 {
+        font-size: 3rem;
+      }
+
+      .content {
+        margin: 15px;
+        padding: 20px;
+      }
+
+      .carousel img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: auto;
+      }
+
+      .message {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cover h1 {
+        font-size: 2.5rem;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Portada -->
+  <div class="cover" id="cover">
+    <h1>
+      <!-- Separar letras en spans para animación -->
+      <span style="animation-delay: 0s">🎉</span>
+      <span style="animation-delay: 0.1s"> </span>
+      <span style="animation-delay: 0.2s">F</span>
+      <span style="animation-delay: 0.3s">e</span>
+      <span style="animation-delay: 0.4s">l</span>
+      <span style="animation-delay: 0.5s">i</span>
+      <span style="animation-delay: 0.6s">z</span>
+      <span style="animation-delay: 0.7s"> </span>
+      <span style="animation-delay: 0.8s">1</span>
+      <span style="animation-delay: 0.9s">5</span>
+      <span style="animation-delay: 1.0s"> </span>
+      <span style="animation-delay: 1.1s">a</span>
+      <span style="animation-delay: 1.2s">ñ</span>
+      <span style="animation-delay: 1.3s">o</span>
+      <span style="animation-delay: 1.4s">s</span>
+      <span style="animation-delay: 1.5s"> </span>
+      <span style="animation-delay: 1.6s">A</span>
+      <span style="animation-delay: 1.7s">r</span>
+      <span style="animation-delay: 1.8s">e</span>
+      <span style="animation-delay: 1.9s">m</span>
+      <span style="animation-delay: 2.0s">y</span>
+      <span style="animation-delay: 2.1s">s</span>
+    </h1>
+    <button class="btn" onclick="showContent()">Ver más</button>
+    <!-- Más partículas de confeti -->
+    <div class="balloon" style="left:5%; animation-delay:0s;"></div>
+    <div class="balloon" style="left:15%; animation-delay:1s;"></div>
+    <div class="balloon" style="left:25%; animation-delay:2s;"></div>
+    <div class="balloon" style="left:35%; animation-delay:3s;"></div>
+    <div class="confetti" style="left:10%; animation-delay:0.5s;"></div>
+    <div class="confetti" style="left:20%; animation-delay:1.5s;"></div>
+    <div class="confetti" style="left:30%; animation-delay:2.5s;"></div>
+    <div class="confetti" style="left:40%; animation-delay:3.5s;"></div>
+    <div class="firework" style="left:50%; animation-delay:0s;"></div>
+    <div class="firework" style="left:60%; animation-delay:1s;"></div>
+    <div class="firework" style="left:70%; animation-delay:2s;"></div>
+    <div class="firework" style="left:80%; animation-delay:3s;"></div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content" id="content">
+    <p class="message">
+      💌 Querida Aremys, han sido 15 años llenos de luz, sonrisas y momentos únicos contigo. 
+      Hoy comienzas una nueva etapa y estoy feliz de acompañarte. ¡Te quiero mucho!
+    </p>
+
+    <div class="section-title">📸 Carrusel de fotos</div>
+    <div class="carousel">
+      <div class="carousel-inner">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 02.49.41_517ad36e.jpg" alt="Foto Infancia">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 02.51.07_973d4783.jpg" alt="Momento Especial">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 03.48.23_ec0bd64d.jpg" alt="Selfie juntos">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 03.49.05_06517a89.jpg" alt="Fiesta">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 03.52.22_fb2f94d6.jpg" alt="Fiesta">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 03.56.42_c49e9918.jpg" alt="Fiesta">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.00.29_2a2c8bd2.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.37.25_d38024e7.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.40.25_126574b4.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.40.25_2b58f5ac.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.00.29_2a2c8bd2.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.40.25_2b58f5ac.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.40.25_2b58f5ac.jpg" alt="Hola">
+        <img src="./15 años/Imagen de WhatsApp 2025-05-11 a las 04.40.25_2b58f5ac.jpg" alt="Hola">
+      </div>
+    </div>
+
+    <
+
+    <!-- Mensajes -->
+    <div class="section-title">🎂 Mensajes</div>
+    <div class="messages">
+      <p>No llevamos la misma sangre, <br>
+         pero hay algo en tu risa que se parece a la mía. <br>
+         Hay algo en tu mirada que me reconoce, <br>
+         como si nuestras almas se hubieran encontrado antes.</p>
+      <p>Eres esa hermana que la vida me dio sin pedir permiso, <br>
+         la que llegó sin títulos ni papeles, <br>
+         pero se ganó cada rincón de mi corazón.</p>
+      <p>Te vi crecer con ternura, con fuerza, <br>
+         y cada día me asombra la luz que llevas dentro. <br>
+         Hoy cumples 15, y no hay celebración más merecida, <br>
+         porque tú, mi niña, eres puro regalo de Dios.</p>
+      <p>A veces pienso que el amor verdadero <br>
+         no necesita explicaciones ni lazos de sangre. <br>
+         A veces, simplemente sucede. <br>
+         Y eso fue lo que pasó contigo: <br>
+         me importaste sin que lo notara, <br>
+         te quise sin tener que pensarlo.</p>
+      <p>Por eso hoy, con lágrimas felices en los ojos, <br>
+         te digo: estoy orgulloso(a) de ti. <br>
+         Gracias por dejarme caminar a tu lado, <br>
+         por confiarme tu risa, tus secretos, tu cariño.</p>
+      <p>Que Dios guíe cada paso que das desde hoy, <br>
+         que nunca te falte fe, valor ni amor. <br>
+         Y recuerda siempre: aunque no tenga tu sangre, <br>
+         tendrás para siempre mi corazón.</p>
+      <p>Con amor eterno,<br>
+         Chris</p>
+    </div>
+
+    <!-- Frase final -->
+    <div class="section-title">Te quiero!!!!!!!!!</div>
+    <p class="message">
+      “¡Feliz 15 años, mi niña hermosa! Que Dios te bendiga hoy y todos los días de tu vida. Te lo mereces todo.”
+    </p>
+
+    <!-- Firma -->
+    <footer>🖊️ Con cariño, tu hermano que te adora.</footer>
+  </div>
+
+  <!-- Música de fondo -->
+  <audio id="background-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function showContent() {
+      // Generar explosión de confeti
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-explosion';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = `${Math.random() * 100}vh`;
+        confetti.style.background = ['#ffcccb', '#ffd700', '#e6e6fa', '#ff69b4'][Math.floor(Math.random() * 4)];
+        confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2000);
+      }
+      // Mostrar contenido
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Control de música
+      const audio = document.getElementById('background-music');
+      if (audio) {
+        audio.volume = 0.5;
+        audio.play().catch(() => {
+          document.body.addEventListener('click', () => audio.play(), { once: true });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
