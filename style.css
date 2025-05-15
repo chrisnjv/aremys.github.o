@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ffafbd, #ffc3a0);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #fff;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.subtitulo {
+    font-size: 20px;
+    color: #ffebee;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.mensaje {
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+.imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* Para mejor responsividad */
+}
+
+.imagenes img {
+    width: 130px; /* Tamaño reducido */
+    height: 200px; /* Altura fija (o usa auto si prefieres proporcional) */
+    object-fit: cover; /* Recorta la imagen para mantener cuadrado */
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.imagenes img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive: imágenes más pequeñas en móviles */
+@media (max-width: 600px) {
+    .imagenes img {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+.amor {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 40px 0;
+    color: #fff;
+    text-shadow: 2px 2px 10px #000;
+}
+
+.notas {
+    background: rgba(0,0,0,0.4);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff6f61;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff3b2e;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+li {
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
